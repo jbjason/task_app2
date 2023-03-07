@@ -23,7 +23,7 @@ class _HomeCalenderState extends State<HomeCalender> {
       dayColor: Colors.grey,
       activeDayColor: homeBodyColor,
       dayNameColor: homeBodyColor,
-      activeBackgroundDayColor: logBackColor,
+      activeBackgroundDayColor: logBackColor.withOpacity(0.9),
       dotsColor: homeBodyColor,
       selectableDayPredicate: (date) => _selectedDate.day != 23,
       locale: 'en',

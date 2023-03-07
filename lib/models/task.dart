@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Task {
   final String id;
   final String title;
@@ -53,16 +55,16 @@ class Task {
     };
   }
 
-  factory Task.fromMap(Map<String, dynamic> map, String id) {
+  factory Task.fromMap(QueryDocumentSnapshot<Object?> map, String id) {
     return Task(
       id: id,
-      title: map['title'].toString(),
-      details: map['details'].toString(),
-      startTime: map['startTime'] as int,
-      endTime: map['endTime'] as int,
+      title: map['title'],
+      details: map['details'],
+      startTime: map['startTime'],
+      endTime: map['endTime'],
       taskDate: DateTime.parse(map['taskDate']),
       date: DateTime.parse(map['date']),
-      category: map['category'] as int,
+      category: map['category'],
     );
   }
 }
