@@ -13,12 +13,12 @@ class Helpers {
           .orderBy('date', descending: true)
           .snapshots();
 
-  void onAddUserTask(Task taskk) async {
+  void onAddUserTask(Task task) async {
     await FirebaseFirestore.instance
         .collection('tasks')
         .doc(currentUserId)
         .collection('task')
-        .add(taskk.taskToMap());
+        .add(task.taskToMap());
   }
 
   void onDeleteUserTask(String id) async {
