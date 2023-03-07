@@ -10,6 +10,7 @@ class AddtTextFile extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        // Linear Color Line
         Container(
           width: 1,
           height: 20,
@@ -19,6 +20,7 @@ class AddtTextFile extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
+        // textField
         Expanded(
           child: TextFormField(
             controller: controller,

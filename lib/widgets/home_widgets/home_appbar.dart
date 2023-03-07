@@ -31,7 +31,6 @@ class HomeAppBar extends StatelessWidget {
               child: Icon(Icons.power_settings_new, color: logBackColor),
             ),
           ),
-
           // image circleAvatar
           getImageIcon(''),
         ],
