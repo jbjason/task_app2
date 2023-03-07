@@ -18,18 +18,6 @@ class TaskCubit extends Cubit<TaskState> {
       for (int i = 0; i < userTaskList.length; i++) {
         final id = userTaskList[i].id;
         taskList.add(Task.fromMap(userTaskList[i], id));
-        // taskList.add(
-        //   Task(
-        //     id: id,
-        //     title: userTaskList[i]['title'],
-        //     details: userTaskList[i]['details'],
-        //     startTime: userTaskList[i]['startTime'],
-        //     endTime: userTaskList[i]['endTime'],
-        //     taskDate: DateTime.parse(userTaskList[i]['taskDate']),
-        //     date: DateTime.parse(userTaskList[i]['date']),
-        //     category: userTaskList[i]['category'],
-        //   ),
-        // );
       }
       emit(TaskLoadedState([...taskList]));
     } catch (e) {
