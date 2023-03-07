@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
           return const Center(child: Text('Error Occured!'));
         } else {
           final userDocs = snapShot.data!.docs;
+          // fetching tasks
           BlocProvider.of<TaskCubit>(context).fetchTasks(userDocs);
           return const HomeBody();
         }
