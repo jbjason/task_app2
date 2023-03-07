@@ -4,6 +4,7 @@ import 'package:task_app2/constants/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_app2/models/category.dart';
 import 'package:task_app2/models/task.dart';
+import 'package:task_app2/widgets/home_widgets/home_delete_icon.dart';
 
 class HomeListItem extends StatelessWidget {
   const HomeListItem({required this.task, super.key});
@@ -41,18 +42,7 @@ class HomeListItem extends StatelessWidget {
             ),
           ),
           // delete icon
-          GestureDetector(
-            onTap: () {},
-            //  BlocProvider.of<TaskCubit>(ctx).add(DeleteTaskEvent(task: task)),
-            child: Container(
-              height: 2,
-              width: 14,
-              decoration: BoxDecoration(
-                color: categories[task.category].color,
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
+          HomeDeleteIcon(task: task),
         ],
       );
 

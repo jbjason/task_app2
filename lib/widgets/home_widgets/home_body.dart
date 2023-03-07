@@ -26,7 +26,7 @@ class HomeBody extends StatelessWidget {
                   const SizedBox(height: 20),
                   // To-do title, date & addTask Button
                   const HomeTitleButton(),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 20),
                   // To-do List
                   const Expanded(child: HomeListView()),
                 ],

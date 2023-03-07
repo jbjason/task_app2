@@ -28,12 +28,22 @@ class _AddtBodyState extends State<AddtBody> {
     return Form(
       key: _formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // appBar
           SizedBox(height: size.height * .2, child: const AddtAppbar()),
           // taskName textFiled
           AddtTextFile(hint: 'Your Task Name', controller: titleController),
           const SizedBox(height: 20),
+          // details textfield
+          AddtTextFile(hint: 'Description', controller: detailsController),
+          const SizedBox(height: 35),
+          // category List
+          AddtCategoryList(
+            onChange: _onCategoryChange,
+            selectedCategory: _selectedCategory,
+          ),
+          const SizedBox(height: 35),
           // date, start & end time textFields
           AddtTimeDate(
             endTime: endTime,
@@ -43,19 +53,10 @@ class _AddtBodyState extends State<AddtBody> {
             onDateChange: _onDateChange,
             onEndTimeChange: _onEndTimeChange,
           ),
-          const SizedBox(height: 20),
-          // details textfield
-          AddtTextFile(hint: 'Description', controller: detailsController),
-          const SizedBox(height: 20),
-          // category List
-          AddtCategoryList(
-            onChange: _onCategoryChange,
-            selectedCategory: _selectedCategory,
-          ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 40),
           // create task Button
           AddtButton(onSubmit: _onSubmit),
-          const SizedBox(height: 150),
+          const SizedBox(height: 50),
         ],
       ),
     );

@@ -22,7 +22,7 @@ class AddtTimeDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 190,
       child: Column(
         children: [
           // date
