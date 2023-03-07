@@ -5,7 +5,8 @@ import 'package:task_app2/widgets/common_widgets/common_widgets.dart';
 import 'package:task_app2/widgets/home_widgets/home_calender.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
+  const HomeAppBar({required this.selectedDate, super.key});
+  final ValueNotifier<DateTime> selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,9 @@ class HomeAppBar extends StatelessWidget {
         //appBar
         _appBar(context),
         // calender
-        const Expanded(child: Center(child: HomeCalender())),
+        Expanded(
+          child: Center(child: HomeCalender(selectedDate: selectedDate)),
+        ),
       ],
     );
   }

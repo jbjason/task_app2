@@ -6,11 +6,11 @@ import 'package:task_app2/constants/constant.dart';
 import 'package:task_app2/screens/add_task_screen.dart';
 
 class HomeTitleButton extends StatelessWidget {
-  const HomeTitleButton({super.key});
+  const HomeTitleButton({required this.selectedDate, super.key});
+  final ValueNotifier<DateTime> selectedDate;
 
   @override
   Widget build(BuildContext context) {
-    final date = DateFormat('MMM d').format(DateTime.now());
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: Row(
@@ -20,11 +20,17 @@ class HomeTitleButton extends StatelessWidget {
           getTitleText('TODO'),
           const SizedBox(width: 8),
           // todays date
-          Text(
-            date,
-            style: GoogleFonts.fjallaOne(
-              textStyle: const TextStyle(color: Colors.grey),
-            ),
+          ValueListenableBuilder(
+            valueListenable: selectedDate,
+            builder: (context, val, __) {
+              final date = DateFormat('MMM d').format(val);
+              return Text(
+                date,
+                style: GoogleFonts.fjallaOne(
+                  textStyle: const TextStyle(color: Colors.grey),
+                ),
+              );
+            },
           ),
           const Spacer(),
           // addTask Button

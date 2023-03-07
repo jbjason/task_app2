@@ -81,7 +81,7 @@ class _AddtBodyState extends State<AddtBody> {
       context: context,
       initialDate: _selectedDate,
       firstDate: _selectedDate.subtract(const Duration(days: 2)),
-      lastDate: _selectedDate.add(const Duration(days: 30)),
+      lastDate: _selectedDate.add(const Duration(days: 27)),
     );
     if (date == null) return;
     setState(() => _selectedDate = date);

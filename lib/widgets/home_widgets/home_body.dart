@@ -8,7 +8,8 @@ class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final height = MediaQuery.of(context).size.height;
+    final selectedDate = ValueNotifier<DateTime>(DateTime.now());
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -22,13 +23,15 @@ class HomeBody extends StatelessWidget {
                 children: [
                   // appBar
                   SizedBox(
-                      height: size.height * .26, child: const HomeAppBar()),
+                    height: height * .26,
+                    child: HomeAppBar(selectedDate: selectedDate),
+                  ),
                   const SizedBox(height: 20),
                   // To-do title, date & addTask Button
-                  const HomeTitleButton(),
+                  HomeTitleButton(selectedDate: selectedDate),
                   const SizedBox(height: 20),
                   // To-do List
-                  const Expanded(child: HomeListView()),
+                  Expanded(child: HomeListView(selectedDate: selectedDate)),
                 ],
               ),
             ),

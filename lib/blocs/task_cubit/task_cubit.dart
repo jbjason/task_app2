@@ -24,4 +24,10 @@ class TaskCubit extends Cubit<TaskState> {
       emit(TaskErrorState(error: e.toString()));
     }
   }
+
+  List<Task> getSortedlist(List<Task> list, DateTime date) {
+    return list.where((e) {
+      return e.taskDate.day == date.day && e.taskDate.month == date.month;
+    }).toList();
+  }
 }
