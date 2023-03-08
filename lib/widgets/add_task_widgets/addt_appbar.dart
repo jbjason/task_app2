@@ -18,7 +18,7 @@ class AddtAppbar extends StatelessWidget {
               child: const Icon(Icons.arrow_back_ios_new),
             ),
             // userImage icon
-            getImageIcon(''),
+            CommonWidget().getImageIcon(''),
           ],
         ),
         // addTask text
@@ -26,7 +26,7 @@ class AddtAppbar extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20, top: 10),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: getTitleText('Add Task'),
+            child: CommonWidget().getTitleText('Add Task'),
           ),
         ),
       ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:task_app2/widgets/home_widgets/home_appbar.dart';
-import 'package:task_app2/widgets/home_widgets/home_clipper.dart';
 import 'package:task_app2/widgets/home_widgets/home_listview.dart';
 import 'package:task_app2/widgets/home_widgets/home_title_button.dart';
+import 'package:task_app2/widgets/home_widgets/home_painter.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});

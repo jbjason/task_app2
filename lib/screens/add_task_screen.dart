@@ -42,7 +42,7 @@ class AddTaskScreen extends StatelessWidget {
       Navigator.pop(context);
     } catch (e) {
       BlocProvider.of<TaskCubit>(context).changeInitialStatus();
-      getSnackBar(context, 'Something went wrong!', Colors.red);
+      CommonWidget().getSnackBar(context, 'Something went wrong!', Colors.red);
     }
   }
 }

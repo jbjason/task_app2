@@ -35,7 +35,7 @@ class HomeAppBar extends StatelessWidget {
             ),
           ),
           // image circleAvatar
-          getImageIcon(''),
+          CommonWidget().getImageIcon(''),
         ],
       );
 }

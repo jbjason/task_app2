@@ -17,7 +17,7 @@ class HomeTitleButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // title
-          getTitleText('TODO'),
+          CommonWidget().getTitleText('TODO'),
           const SizedBox(width: 8),
           // todays date
           ValueListenableBuilder(

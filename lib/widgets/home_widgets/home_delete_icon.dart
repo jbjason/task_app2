@@ -34,7 +34,8 @@ class HomeDeleteIcon extends StatelessWidget {
                     Helpers().onDeleteUserTask(task.id);
                     Navigator.of(ctx).pop();
                   } catch (e) {
-                    getSnackBar(ctx, 'Something went wrong!', Colors.red);
+                    CommonWidget()
+                        .getSnackBar(ctx, 'Something went wrong!', Colors.red);
                   }
                 },
                 child: const Text("Yes"),

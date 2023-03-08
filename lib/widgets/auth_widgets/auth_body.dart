@@ -88,7 +88,8 @@ class _AuhtBodyState extends State<AuhtBody> {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (_userImageFile == null && !_isLogin) {
-      getSnackBar(context, 'Please pick an image', Colors.redAccent);
+      CommonWidget()
+          .getSnackBar(context, 'Please pick an image', Colors.redAccent);
       return;
     }
     if (isValid) {
