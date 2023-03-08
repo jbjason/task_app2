@@ -56,7 +56,6 @@ class _AddtBodyState extends State<AddtBody> {
           const SizedBox(height: 40),
           // create task Button
           AddtButton(onSubmit: _onSubmit),
-          const SizedBox(height: 50),
         ],
       ),
     );

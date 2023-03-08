@@ -1,43 +1,46 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:task_app2/widgets/home_widgets/home_appbar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_app2/blocs/helpers.dart';
+import 'package:task_app2/blocs/task_cubit/task_cubit.dart';
 import 'package:task_app2/widgets/home_widgets/home_listview.dart';
-import 'package:task_app2/widgets/home_widgets/home_title_button.dart';
-import 'package:task_app2/widgets/home_widgets/home_painter.dart';
 
 class HomeBody extends StatelessWidget {
-  const HomeBody({super.key});
+  const HomeBody({required this.selectedDate, super.key});
+  final ValueNotifier<DateTime> selectedDate;
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final selectedDate = ValueNotifier<DateTime>(DateTime.now());
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            // painter
-            Positioned.fill(child: CustomPaint(painter: HomePainter())),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  // appBar
-                  SizedBox(
-                    height: height * .26,
-                    child: HomeAppBar(selectedDate: selectedDate),
-                  ),
-                  const SizedBox(height: 20),
-                  // To-do title, date & addTask Button
-                  HomeTitleButton(selectedDate: selectedDate),
-                  const SizedBox(height: 20),
-                  // To-do List
-                  Expanded(child: HomeListView(selectedDate: selectedDate)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+    final currentUserId = FirebaseAuth.instance.currentUser!.uid;
+    return StreamBuilder(
+      stream: Helpers.getUserTasks(currentUserId),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapShot) {
+        if (snapShot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapShot.hasError) {
+          return const Center(child: Text('Error Occured While Fetching!'));
+        } else {
+          final userDocs = snapShot.data!.docs;
+          // fetching tasks
+          BlocProvider.of<TaskCubit>(context).fetchTasks(userDocs);
+          return BlocBuilder<TaskCubit, TaskState>(
+            builder: (context, state) {
+              if (state is TaskErrorState) {
+                return Center(child: Text(state.error));
+              } else if (state is TaskLoadingState) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is TaskLoadedState) {
+                return HomeListView(
+                  list: state.allTasks,
+                  selectedDate: selectedDate,
+                );
+              } else {
+                return Container();
+              }
+            },
+          );
+        }
+      },
     );
   }
 }

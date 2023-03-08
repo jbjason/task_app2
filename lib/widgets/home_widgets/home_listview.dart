@@ -6,26 +6,13 @@ import 'package:task_app2/models/task.dart';
 import 'package:task_app2/widgets/home_widgets/home_listitem.dart';
 
 class HomeListView extends StatelessWidget {
-  const HomeListView({required this.selectedDate, super.key});
+  const HomeListView(
+      {required this.list, required this.selectedDate, super.key});
+  final List<Task> list;
   final ValueNotifier<DateTime> selectedDate;
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TaskCubit, TaskState>(
-      builder: (context, state) {
-        if (state is TaskErrorState) {
-          return Center(child: Text(state.error));
-        } else if (state is TaskLoadingState) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is TaskLoadedState) {
-          return _listView(state.allTasks, context);
-        } else {
-          return Container();
-        }
-      },
-    );
-  }
-
-  Widget _listView(List<Task> list, BuildContext ctx) {
     return ValueListenableBuilder(
       valueListenable: selectedDate,
       builder: (ctx, selected, _) {

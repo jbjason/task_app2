@@ -4,15 +4,13 @@ import 'package:task_app2/constants/constant.dart';
 
 class CommonWidget {
   Widget getImageIcon(String img) => Container(
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: loginGradient,
-        ),
+        decoration:
+            const BoxDecoration(shape: BoxShape.circle, color: homeBodyColor),
         child: const CircleAvatar(
-          radius: 19,
+          radius: 22,
           backgroundColor: Colors.transparent,
           child: CircleAvatar(
-            radius: 18,
+            radius: 20,
             backgroundImage:
                 NetworkImage('https://picsum.photos/200/300?random=10'),
           ),

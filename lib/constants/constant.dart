@@ -6,7 +6,8 @@ const logGradient2Color = Color(0xFFE71B6A);
 
 const homeText1Color = Color(0xFFF0F4FD);
 const homeText2Color = Color(0xFFFFFFFF);
-const homeBodyColor = Color(0xFFF0F4FD);
+const homeBodyColor = Color.fromARGB(255, 225, 235, 252);
+const homeBodySecondaryColor = Color(0xFFF0F4FD);
 
 const loginGradient = LinearGradient(
   begin: Alignment.topLeft,
