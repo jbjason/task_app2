@@ -98,7 +98,7 @@ class HomeListItem extends StatelessWidget {
         // Due-date
         _iconText(CupertinoIcons.clock, startTime),
         _iconText(Icons.alarm_off_outlined, endTime),
-        _iconText(Icons.share, 'Share'),
+        _iconText(Icons.share_outlined, 'Share'),
       ],
     );
   }
