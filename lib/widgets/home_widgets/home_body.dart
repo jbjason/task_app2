@@ -11,35 +11,38 @@ class HomeBody extends StatelessWidget {
   final ValueNotifier<DateTime> selectedDate;
   @override
   Widget build(BuildContext context) {
-    final currentUserId = FirebaseAuth.instance.currentUser!.uid;
-    return StreamBuilder(
-      stream: Helpers.getUserTasks(currentUserId),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapShot) {
-        if (snapShot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapShot.hasError) {
-          return const Center(child: Text('Error Occured While Fetching!'));
-        } else {
-          final userDocs = snapShot.data!.docs;
-          // fetching tasks
-          BlocProvider.of<TaskCubit>(context).fetchTasks(userDocs);
-          return BlocBuilder<TaskCubit, TaskState>(
-            builder: (context, state) {
-              if (state is TaskErrorState) {
-                return Center(child: Text(state.error));
-              } else if (state is TaskLoadingState) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state is TaskLoadedState) {
-                return HomeListView(
-                  list: state.allTasks,
-                  selectedDate: selectedDate,
-                );
-              } else {
-                return Container();
-              }
-            },
-          );
-        }
+    final id = FirebaseAuth.instance.currentUser!.uid;
+    return ValueListenableBuilder(
+      valueListenable: selectedDate,
+      builder: (ctx, date, _) {
+        return StreamBuilder(
+          stream: Helpers.getUserTasks(id, date),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapShot) {
+            if (snapShot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapShot.hasError) {
+              return const Center(child: Text('Error Occured While Fetching!'));
+            } else {
+              final userDocs = snapShot.data!.docs;
+              // fetching tasks
+              BlocProvider.of<TaskCubit>(context).fetchTasks(userDocs);
+              return BlocBuilder<TaskCubit, TaskState>(
+                builder: (context, state) {
+                  if (state is TaskErrorState) {
+                    return Center(child: Text(state.error));
+                  } else if (state is TaskLoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is TaskLoadedState) {
+                    return HomeListView(tasks: state.allTasks);
+                  } else {
+                    return Container();
+                  }
+                },
+              );
+            }
+          },
+        );
       },
     );
   }
