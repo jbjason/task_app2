@@ -16,20 +16,17 @@ class AddTaskScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Stack(
-          children: [
-            // back painter
-            Positioned.fill(child: CustomPaint(painter: AddTaskPainter())),
-            // body
-            Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-              child: SingleChildScrollView(
-                child: AddtBody(onSubmit: _onSubmit),
-              ),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: CustomPaint(
+            painter: AddTaskPainter(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+              child:
+                  SingleChildScrollView(child: AddtBody(onSubmit: _onSubmit)),
             ),
-          ],
+          ),
         ),
       ),
     );

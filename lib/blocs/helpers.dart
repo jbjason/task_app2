@@ -14,8 +14,8 @@ class Helpers {
         .collection('tasks')
         .doc(id)
         .collection('task')
-        // .where('taskDate', isGreaterThanOrEqualTo: dayStart.toIso8601String())
-        // .where('taskDate', isLessThanOrEqualTo: dayEnd.toIso8601String())
+        .where('taskDate', isGreaterThanOrEqualTo: dayStart.toIso8601String())
+        .where('taskDate', isLessThanOrEqualTo: dayEnd.toIso8601String())
         .orderBy('taskDate', descending: true)
         .snapshots();
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:task_app2/models/category.dart';
-import 'package:task_app2/constants/constant.dart';
 
 class AddtCategoryList extends StatelessWidget {
   const AddtCategoryList(
@@ -9,7 +8,7 @@ class AddtCategoryList extends StatelessWidget {
   final int selectedCategory;
   @override
   Widget build(BuildContext context) {
-    final lableColor = logBackColor.withOpacity(.3);
+    final lableColor = Colors.white30.withOpacity(.5);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
