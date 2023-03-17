@@ -61,18 +61,16 @@ class _AddtBodyState extends State<AddtBody> {
     );
   }
 
-  void _onStartTimeChange() async {
-    TimeOfDay? time =
-        await showTimePicker(context: context, initialTime: TimeOfDay.now());
-    if (time == null) return;
-    setState(() => startTime = time);
-  }
+  void _onStartTimeChange() => _onTimeChange('start');
+  void _onEndTimeChange() => _onTimeChange('end');
+  void _onCategoryChange(int i) => setState(() => _selectedCategory = i);
 
-  void _onEndTimeChange() async {
+  void _onTimeChange(String tag) async {
     TimeOfDay? time =
         await showTimePicker(context: context, initialTime: TimeOfDay.now());
     if (time == null) return;
-    setState(() => endTime = time);
+    tag == 'start' ? startTime = time : endTime = time;
+    setState(() {});
   }
 
   void _onDateChange() async {
@@ -86,7 +84,6 @@ class _AddtBodyState extends State<AddtBody> {
     setState(() => _selectedDate = date);
   }
 
-  void _onCategoryChange(int i) => setState(() => _selectedCategory = i);
   void _onSubmit() {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
