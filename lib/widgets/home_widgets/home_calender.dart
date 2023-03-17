@@ -11,7 +11,7 @@ class HomeCalender extends StatelessWidget {
       valueListenable: selectedDate,
       builder: (context, _, __) => CalendarTimeline(
         initialDate: selectedDate.value,
-        firstDate: DateTime.now().subtract(const Duration(days: 4)),
+        firstDate: DateTime.now().subtract(const Duration(days: 10)),
         lastDate: DateTime.now().add(const Duration(days: 27)),
         onDateSelected: (date) => selectedDate.value = date,
         leftMargin: 20,

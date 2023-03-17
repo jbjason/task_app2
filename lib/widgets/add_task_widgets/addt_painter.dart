@@ -19,7 +19,7 @@ class AddTaskPainter extends CustomPainter {
     canvas.drawPath(path2, paint2);
 
     // front part
-    final paint = Paint()..color = homeBodySecondaryColor;
+    final paint = Paint()..color = logBackColor;
     final path = Path();
     path.moveTo(0, h * .1);
     path.cubicTo(0, h * .17, w * .1, h * .17, w * .25, h * .17);

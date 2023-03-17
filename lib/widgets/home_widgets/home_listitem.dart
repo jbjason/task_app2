@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task_app2/constants/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_app2/models/category.dart';
 import 'package:task_app2/models/task.dart';
@@ -67,7 +66,7 @@ class HomeListItem extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: logBackColor,
+                    color: Colors.white70,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -115,7 +114,7 @@ class HomeListItem extends StatelessWidget {
           const SizedBox(width: 5),
           Text(
             title,
-            style: const TextStyle(fontSize: 10, color: logBackColor),
+            style: const TextStyle(fontSize: 10, color: Colors.white38),
           ),
         ],
       );

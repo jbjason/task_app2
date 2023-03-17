@@ -17,11 +17,11 @@ class CommonWidget {
         ),
       );
 
-  Widget getTitleText(String title) => Text(
+  Widget getTitleText(String title, Color color) => Text(
         title,
         style: GoogleFonts.fjallaOne(
-          textStyle: const TextStyle(
-            color: logBackColor,
+          textStyle: TextStyle(
+            color: color,
             fontSize: 27,
             letterSpacing: 1.5,
           ),

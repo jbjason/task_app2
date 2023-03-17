@@ -19,7 +19,7 @@ class HomePainter extends CustomPainter {
     canvas.drawPath(path2, paint2);
 
     // Upper part
-    final paint = Paint()..color = homeBodySecondaryColor;
+    final paint = Paint()..color = logBackColor;
     final path = Path();
     path.moveTo(w, h * .1);
     path.cubicTo(w * .9, h * .1, w * 1.07, h * .28, w * .85, h * .28);

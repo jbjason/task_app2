@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:task_app2/constants/constant.dart';
 import 'package:task_app2/models/task.dart';
 import 'package:task_app2/widgets/home_widgets/home_listitem.dart';
 
@@ -19,23 +20,23 @@ class HomeListView extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.grey[300]!,
-                spreadRadius: 3,
+                color: logGradient1Color.withOpacity(.5),
+                spreadRadius: 1,
                 blurRadius: 10,
-                offset: const Offset(2, 2),
+                offset: const Offset(-2, -2),
               ),
               const BoxShadow(
-                color: Colors.white,
+                color: logBackColor,
                 spreadRadius: 3,
-                blurRadius: 10,
-                offset: Offset(-2, -2),
+                blurRadius: 20,
+                offset: Offset(5, 5),
               ),
             ],
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
+              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
               child: Container(
                 height: 150,
                 padding: const EdgeInsets.only(
@@ -45,9 +46,12 @@ class HomeListView extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [Colors.white, Colors.white.withOpacity(.6)],
+                    colors: [
+                      logGradient1Color.withOpacity(.2),
+                      logGradient2Color.withOpacity(.2)
+                    ],
                   ),
-                  border: Border.all(width: 1.2, color: Colors.white),
+                  // border: Border.all(width: 1.2, color: Colors.black),
                 ),
                 child: HomeListItem(task: task),
               ),

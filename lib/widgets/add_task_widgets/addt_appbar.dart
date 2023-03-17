@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_app2/constants/constant.dart';
 import 'package:task_app2/widgets/common_widgets/common_widgets.dart';
 
 class AddtAppbar extends StatelessWidget {
@@ -26,7 +27,7 @@ class AddtAppbar extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20, top: 10),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: CommonWidget().getTitleText('Add Task'),
+            child: CommonWidget().getTitleText('Add Task', logBackColor),
           ),
         ),
       ],
